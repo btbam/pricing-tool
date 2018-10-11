@@ -1,0 +1,201 @@
+@import '../shared/globalvars.scss';
+calculator {
+  position: absolute;
+  right: 20px;
+  top: 100px;
+  width: 300px;
+  z-index: 65;
+  font-family: $robotoregular;
+  color: #FFF;
+
+  .section-label {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: normal;
+
+    &.text-right {
+      white-space: nowrap;
+    }
+  }
+  .section-restore-values-button {
+    font-size:   14px;
+    line-height: 16px;
+    font-family: $robotomedium;
+    text-align:   right;
+    width:100%;
+    background-color: transparent;
+    border: none;
+  }
+
+  .section-label.section-total-label-font {
+    font-size: 20px;
+  }
+
+  .section-label.section-total-top {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+   .section-header-align-label {
+     text-align: left;
+   }
+
+  .section-label.section-california-label-font {
+    font-size: 18px;
+  }
+
+  .section-label.section-dcmifltx-label-font {
+    font-size: 18px;
+  }
+
+  .section-label.section-total-column {
+    width:25%
+  }
+
+  .section-label.section-total-header {
+    float: left;
+    text-align: left;
+    margin-left:-10px;
+  }
+
+  .section-label.section-total-value {
+    float: right;
+    text-align: right;
+    margin-right: -12px;
+  }
+
+  .section-label-offset { margin-left: -10px;
+    font-size: 12px;
+  }
+
+  .section-value {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 0;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.29);
+    height: 25px;
+    font-size: 12px;
+    color: #fff;
+    padding: 0 5px;
+
+    &[readonly] {
+      background-color: transparent;
+    }
+  }
+
+  .section-header {
+    background: #9898A1;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.11);
+    padding: 15px 10px;
+    overflow: auto;
+    position: relative;
+
+    .blue-star {
+      background: url('/images/blue-star.png');
+      width: 22px;
+      height: 22px;
+      position: absolute;
+      top: 8px;
+      right: 40px;
+    }
+    .toggle {
+      width: 23px;
+      height: 17px;
+      display: block;
+      position: absolute;
+      top: 41px;
+      right: 41px;
+      outline: 0;
+      color: #8FCC96;
+      cursor: pointer;
+
+      &.toggle-on {
+        background: url('/images/toggle_on.png');
+      }
+
+      &.toggle-off {
+        background: url('/images/toggle_off.png');
+      }
+    }
+
+    .final {
+      font-size: 42px;
+      line-height: 49px;
+    }
+
+    .benchmark {
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+    .off-manual {
+      margin-top: 3px;
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    .percent-change {
+      font-size: 14px;
+      line-height: 16px;
+
+      .fa {
+        padding-right:1px;
+      }
+    }
+
+    .lbl {
+      /* Ballpark: */
+      font-size: 18px;
+      line-height: 24px;
+
+      &.small {
+        font-size: 14px;
+        line-height: 22px;
+      }
+    }
+
+    h2, p {
+      margin: 0;
+      padding: 0;
+    }
+
+    .header-left {
+      width: 160px;
+      float: left;
+      text-align: right;
+    }
+    .header-right {
+      width: 100px;
+      float: right;
+      margin-top: -5px;
+    }
+  }
+
+  .section-spacer {
+    height: 3px;
+    background: #878791;
+    margin: 0 5px;
+  }
+
+  .calculator-section {
+    background: #878791;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.11);
+    margin: 0 5px;
+    overflow: auto;
+    padding:0 10px 15px 10px;
+
+    .row {
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    .calculator-inner-section.other {
+      .section-label.text-right {
+        white-space: normal;
+      }
+    }
+  }
+}
+
+#calculator-section-ballpark .section-header { border-radius: 2px 2px 0 0; }
+#calculator-section-epli .section-header { border-radius: 0 0 2px 2px }

@@ -1,0 +1,24 @@
+description "pricing-tool backend"
+
+start on runlevel [2345]
+stop on runlevel [016]
+
+setuid vagrant
+setgid vagrant
+chdir /srv/pricing_tool/current
+
+env HOME=/home/vagrant
+env RAILS_ENV=production
+script
+  . /etc/environment
+  for var in $(cat /etc/environment | cut -d'=' -f1) ; do
+    export $var
+  done
+
+  exec bundle exec unicorn_rails -c config/unicorn.rb
+end script
+
+respawn
+respawn limit 3 5
+
+kill signal QUIT

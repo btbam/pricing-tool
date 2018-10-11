@@ -1,0 +1,18 @@
+default: &default
+  adapter: oracle_enhanced
+  pool: 20
+  database: <%= ENV['ORACLE_DB_NAME'] %>
+  username: <%= ENV['ORACLE_DB_USERNAME'] %>
+  password: <%= ENV['ORACLE_DB_PWD'] %>
+  schema: <%= ENV['ORACLE_DB_SCHEMA'] %>
+  host: <%= ENV['ORACLE_DB_HOST'] %>
+  port: <%= ENV['ORACLE_DB_PORT'] %>
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+
+staging:
+  <<: *default

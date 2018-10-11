@@ -1,0 +1,7 @@
+<!-- Show search results-->
+<tabset class="google-news-group" >
+  <tab  ng-repeat="tab in tabs" heading={{tab.title}}  select="selectTab(tab.title )" >   <div class="peer-header-divider"></div><s></s>
+    <news-search  initialvalue ={{$first}} tabname ={{tab.title}} keywords={{tab.keywords}}> </news-search>
+  </tab>
+  </tabset>
+</tabset>

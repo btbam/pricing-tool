@@ -1,0 +1,29 @@
+<div class="labels" ng-class="{shadow: labelShadow}">
+  <div class="creditValue"><span ng-bind="healthValue">{{healthValue}}</span> Health</div>
+  <div class="stressValue"><span ng-bind="stressValue">{{stressValue}}</span> Stress</div>
+  <div class="healthValue"><span ng-bind="creditValue">{{creditValue}}</span> Credit</div>
+</div>
+
+<svg width="215" height="200" version="1.1">
+  <!-- set up gradients -->
+  <defs>
+    <linearGradient id="whiteGrad" gradientUnits="userSpaceOnUse" x1="100%" y1="0%" x2="94.5%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(254, 252, 251);stop-opacity:1" />
+      <stop offset="50%" style="stop-color:rgb(254, 252, 251);stop-opacity:0" />
+    </linearGradient>
+  </defs>
+
+  <!-- background circles -->
+  <path id="bgArc1" fill="none" stroke="#353535" opacity="0.3" stroke-linecap="round" />
+  <path id="bgArc2" fill="none" stroke="#606060" opacity="0.5" stroke-linecap="round" />
+  <path id="bgArc3" fill="none" stroke="#9B9B9B" opacity="0.3" stroke-linecap="round" />
+
+  <!-- arc segments -->
+  <path id="creditArc" class="colorize financialHealthArc" fill="none" stroke="rgb(224, 75, 80)" stroke-linecap="round" />
+  <path id="stressArc" class="colorize financialHealthArc" fill="none" stroke="rgb(164, 213, 154)" stroke-linecap="round" />
+  <path id="healthArc" class="colorize financialHealthArc" fill="none" stroke="rgb(231, 180, 108)" stroke-linecap="round" />
+
+  <path id="overlayArc1" fill="none" stroke="url(#whiteGrad)" stroke-linecap="round" />
+  <path id="overlayArc2" fill="none" stroke="url(#whiteGrad)" stroke-linecap="round" />
+  <path id="overlayArc3" fill="none" stroke="url(#whiteGrad)" stroke-linecap="round" />
+</svg>

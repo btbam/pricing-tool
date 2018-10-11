@@ -1,0 +1,37 @@
+@import '../shared/globalvars.scss';
+
+.styled-select {
+  background: url('../../images/chevron-down_8c9eab_16.png') no-repeat 100% 0;
+  font-size: 18px;
+  font-family: $robotomedium;
+  position: relative;
+  top: 10px;
+  max-width: 835px !important;
+}
+.styled-select select {
+  background: transparent;
+  border: none;
+  height: 30px;
+  padding: 0px; /* If you add too much padding here, the options won't show in IE */
+  position: relative;
+  top: -10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 2px 40px 2px 2px;
+  border: none;
+  //IE
+  overflow:hidden;
+  max-width: 800px !important;
+}
+.semi-square {
+  border-radius: 5px;
+}
+.styled-select-hidden-value {
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  top: -9999999px;
+  white-space: nowrap;
+  display: block;
+}

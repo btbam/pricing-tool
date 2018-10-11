@@ -1,0 +1,31 @@
+<div class="row" >
+  <div class="input-group input-group-lg">
+    <input type="text"
+             class="form-control google-search-query"
+             ng-model="newsSearch.query"
+             ng-keypress="($event.which === 13)?newsSearch.search(newsSearch.query):0">
+    <div class="input-group-btn">
+      <button class="btn btn-default google-search-button" ng-click="newsSearch.search(newsSearch.query)"><i class="fa fa-search"></i></button>
+    </div>
+  </div>
+</div>
+
+<div class="results" ng-class="{'loading': newsSearch.loadingSearch}">
+  <div ng-show="newsSearch.loadingSearch" class="loader-dark"></div>
+
+  <div ng-show="newsSearch.results" class="search-info">
+    last updated {{newsSearch.lastUpdate.now() |  date:'MM/dd/yy @ HH:mm'}}
+  </div>
+  <div ng-repeat="result in newsSearch.results" class="result">
+    <div class="result-title"><a href="{{result.url}}" target="_BLANK">{{result.title}}</a></div>
+    <div class="url">{{result.url}}</div>
+    <div class="description">{{result.description}}</div>
+  </div>
+</div>
+<br>
+<div class="pages">
+
+  <div class="page" ng-class="{'page-active': newsSearch.currentPage==$index+1}" ng-repeat="page in newsSearch.range(newsSearch.pageRange) track by $index" ng-click="newsSearch.search(newsSearch.query, $index+1);setActive($event)">
+    {{$index+1}}
+  </div>
+</div>

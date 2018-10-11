@@ -1,0 +1,3 @@
+bootstrap.mlockall: true
+script.disable_dynamic: false
+network.host: localhost

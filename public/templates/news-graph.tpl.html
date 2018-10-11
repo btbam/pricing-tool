@@ -1,0 +1,10 @@
+<!--<div ng-if="toolTipData" class="news-graph-tooltip-overlay" ng-click="graphClicked()"></div>-->
+<div ng-if="loadingGraph" class="loader"></div>
+<div class="news-graph-target"></div>
+<div ng-if="toolTipData" class="news-graph-tooltip" style="top:{{toolTipData.position.y}}px; left:{{toolTipData.position.x}}px">
+	<span class="tooltip-arrow-cursor"></span>
+	<span class="header">{{toolTipData.datetime | date:'MMMM'}} - {{toolTipData.count}} Articles</span>
+	<ul>
+		<li ng-repeat="link in toolTipData.sample_articles"><a ng-href="{{link.url}}">{{link.title | limitTo: 28}}{{link.title.length > 28 ? '&#8230;' : ''}}</a></li>
+	</ul>
+</div>

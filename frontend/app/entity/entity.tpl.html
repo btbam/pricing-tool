@@ -1,0 +1,64 @@
+<div id="company-overview-container">
+  <div class='container'>
+    <company-overview></company-overview>
+  </div>
+</div>
+
+<div class='content-area'>
+  <div class='container'>
+    <div id="content-container">
+
+        <accordion close-others="false">
+          <!-- peer groups -->
+          <accordion-group id="peer-groups" class="peerGroup" is-open="true" is-disabled="true">
+            <peer section="peer_groups" section-title="Peer Groups"></peer>
+          </accordion-group>
+
+          <div class="indented">
+            <!-- loss history -->
+            <accordion-group id="loss-history" class="lossHistory" is-open="true" is-disabled="true">
+              <accordion-heading>
+                Loss Ratio
+              </accordion-heading>
+              <comparable section="loss_experience" section-title="Loss Ratio"></comparable>
+            </accordion-group>
+
+            <!-- industry -->
+            <accordion-group id="industry" class="industry" is-open="true" is-disabled="true">
+              <accordion-heading>
+                Industry
+              </accordion-heading>
+              <comparable section="industry" section-title="Industry"></comparable>
+            </accordion-group>
+
+            <!-- state -->
+            <accordion-group id="state" class="state" is-open="true" is-disabled="true">
+              <accordion-heading>
+                State
+              </accordion-heading>
+              <comparable section="state" section-title="State"></comparable>
+            </accordion-group>
+
+            <!-- size of company -->
+            <accordion-group id="size" class="sizeOfCompany" is-open="true" is-disabled="true">
+              <accordion-heading>
+                Revenue
+              </accordion-heading>
+              <comparable section="size_of_company" section-title="Revenue ($)"></comparable>
+            </accordion-group>
+
+            <!-- number of employees -->
+            <accordion-group id="average-employee-salary" class="numberOfEmployees" is-open="true" is-disabled="true">
+              <accordion-heading>
+                Employee Count
+              </accordion-heading>
+              <comparable section="number_of_employees" section-title="Number of Employees"></comparable>
+            </accordion-group>
+
+            <news-search-group></news-search-group>
+          </div>
+        </accordion>
+      </div>
+    </div>
+  </div>
+</div>

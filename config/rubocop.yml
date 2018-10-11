@@ -1,0 +1,41 @@
+AllCops:
+  Exclude:
+    - 'cookbooks/**/*'
+    - 'db/**/*'
+    - 'frontend/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'app/services/importer_helper/oracle/**/*'
+    - 'lib/tasks/load_tester.rake'
+    - 'app/services/demo_service.rb'
+  RunRailsCops: true
+  DisplayCopNames: true
+
+IndentationConsistency:
+  Exclude:
+    - 'config/unicorn.rb'
+
+AbcSize:
+  Exclude:
+    - 'spec/api/platform/comparables_spec.rb'
+
+# EmptyLinesAroundBody:
+#   Enabled: false
+
+LineLength:
+  Max: 120
+
+ClassLength:
+  Max: 150
+
+MethodLength:
+  Enabled: false
+
+# WhileUntilModifier:
+#   Enabled: false
+
+ClassAndModuleChildren:
+  Enabled: false
+
+Documentation:
+    Enabled: false

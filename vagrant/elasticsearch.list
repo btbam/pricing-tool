@@ -1,0 +1,2 @@
+deb http://packages.elasticsearch.org/elasticsearch/1.3/debian stable main
+# deb-src http://packages.elasticsearch.org/elasticsearch/1.3/debian stable main

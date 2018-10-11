@@ -1,0 +1,12 @@
+<figure class="stress-score-bar" id="stress-score-bar">
+  <div ng-if="showStressScore" class="company-score score" ng-class="stressScore.company.color_range" style="left: {{stressScore.company.position}}px;">
+    <div class="title">Entity</div>
+    <div class="value">{{stressScore.company.value <= 0 ? 'N/A' : (stressScore.company.value|number:0)}}</div>
+    <i class="fa fa-caret-down {{ colorBasedOnValue(stressScore.company.value) }}"></i>
+  </div>
+  <div ng-if="showStressScore" class="average-score score" ng-class="stressScore.average.color_range" style="left: {{stressScore.average.position}}px;">
+    <i class="fa fa-caret-up {{ colorBasedOnValue(stressScore.average.value) }}"></i>
+    <div class="title">Industry Score</div>
+    <div class="value">{{stressScore.average.value  <= 0 ? 'N/A' : (stressScore.average.value |number:0)}}</div>
+  </div>
+</figure>

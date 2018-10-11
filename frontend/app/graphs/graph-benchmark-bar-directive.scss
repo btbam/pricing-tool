@@ -1,0 +1,104 @@
+@import '../shared/globalvars.scss';
+
+
+
+#benchmark-graph-container {
+  width:378px;
+  height:160px;
+  position:absolute;
+  font-family: $robotoregular;
+  color:#fff;
+  top:-140px;
+  left:30px;
+
+  #benchmark-graph {
+    background-image: linear-gradient(-90deg, #8FCC96 0%, rgba(237,220,71,0.88) 44%, #F07E6E 92%);
+    border-radius:2px;
+    height:10px;
+    width:378px;
+    position:absolute;
+    top:59px;
+  }
+
+  #benchmark-chunk-benchmark {
+    text-align:center;
+    width:200px;
+    position:absolute;
+    margin-left:-100px;
+  }
+
+  #benchmark-chunk-benchmark .stat-name {
+    font-size: 20px;
+    color: #FFFFFF;
+    line-height: 24px;
+    font-weight:bold;
+  }
+
+  #benchmark-chunk-benchmark .stat-value {
+    font-size: 14px;
+    color: #FFFFFF;
+    padding-bottom:5px;
+    line-height: 16px;
+  }
+
+  #benchmark-chunk-benchmark .vertical-pointer {
+    background:#fff;
+    width:1px;
+    height:28px;
+    margin:0 auto;
+    z-index:999;
+  }
+
+  #benchmark-chunk-expiring-gwp {
+    text-align:right;
+    width:100px;
+    position:absolute;
+    top:54px;
+    padding:60px 6px 0 0;
+    border-right:1px solid #fff;
+  }
+
+  #benchmark-chunk-ballpark {
+    text-align:left;
+    width:200px;
+    position:absolute;
+    top:54px;
+    padding:20px 0 0 6px;
+    border-left:1px solid #fff;
+  }
+
+  .ballpark-star {
+    position:absolute;
+    top:0;
+    margin-left:-21px;
+    margin-top:-8px;
+  }
+
+  .stat-name {
+    font-family: $robotolight;
+    font-size: 14px;
+    color: #FFF;
+    line-height:16px;
+  }
+
+  .stat-value {
+    font-size: 14px;
+    color: #FFFFFF;
+    line-height:18px;
+  }
+
+  .stat-pct {
+    font-family: $robotomedium;
+    font-style:italic;
+    font-size: 10px;
+    color: #F07E6E;
+    line-height:18px;
+    white-space:nowrap;
+
+    &.up {
+      color: #8FCC96;
+    }
+  }
+
+
+}

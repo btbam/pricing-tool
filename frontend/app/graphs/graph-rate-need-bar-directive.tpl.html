@@ -1,0 +1,4 @@
+<figure class="rate-need-bar" id="rate-need-bar">
+  <span ng-if="showRateNeed" class="average-score score" ng-class="rateNeed.average.color_range" style="bottom:{{positionBasedOnValueRateNeed(rateNeed.average.value) }}px;"><span class="title">Peer Group</span><span class="value">{{rateNeed.average.value ? rateNeed.average.value + '%' : 'N/A'}}</span><i class="fa fa-caret-left {{ colorBasedOnValueRateNeed(rateNeed.average.value) }}"></i></span>
+  <span ng-if="showRateNeed" class="company-score score" ng-class="rateNeed.company.color_range" style="bottom:{{ positionBasedOnValueRateNeed(rateNeed.company.value) }}px;"><span class="title">Entity</span><span class="value">{{rateNeed.company.value + '%'}}</span><i class="fa fa-caret-right {{ colorBasedOnValueRateNeed(rateNeed.company.value) }}"></i></span>
+</figure>

@@ -1,0 +1,16 @@
+defaults: &defaults
+    APP_TIMEZONE: Eastern Time (US & Canada)
+    CACHING_NAMESPACE_KEY: alpha
+
+development:
+    <<: *defaults
+
+production:
+    <<: *defaults
+
+staging:
+    APP_TIMEZONE: Eastern Time (US & Canada)
+    CACHING_NAMESPACE_KEY: staging
+
+test:
+    <<: *defaults

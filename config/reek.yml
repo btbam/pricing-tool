@@ -1,0 +1,131 @@
+---
+Attribute:
+  enabled: false
+  exclude: []
+BooleanParameter:
+  enabled: true
+  exclude: []
+ClassVariable:
+  enabled: true
+  exclude: []
+ControlParameter:
+  enabled: false
+  exclude: []
+DataClump:
+  enabled: true
+  exclude: []
+  max_copies: 2
+  min_clump_size: 2
+DuplicateMethodCall:
+  enabled: true
+  exclude:
+    - 'DemoService'
+  max_calls: 1
+  allow_calls: []
+FeatureEnvy:
+  enabled: false
+  exclude: []
+IrresponsibleModule:
+  enabled: false
+  exclude: []
+LongParameterList:
+  enabled: false
+  exclude:
+    - 'ImporterHelper::CSV#find_decimal'
+  max_params: 3
+  overrides:
+    initialize:
+      max_params: 5
+LongYieldList:
+  enabled: true
+  exclude: []
+  max_params: 3
+#ModuleInitialize:
+#  enabled: true
+#  exclude: []
+NestedIterators:
+  enabled: true
+  exclude:
+    - 'Company#initialize'
+    - 'CompanyRepository#generate_shoulds'
+    - 'Platform::API#preload_models'
+    - 'ImporterHelper::Oracle::Smad#converters'
+    - 'ImporterHelper::Oracle::Csad#converters'
+  max_allowed_nesting: 1
+  ignore_iterators:
+    - 'realtime'
+NilCheck:
+  enabled: true
+  exclude: []
+PrimaDonnaMethod:
+  enabled: true
+  exclude:
+    - 'Platform::API'
+RepeatedConditional:
+  enabled: true
+  exclude: []
+  max_ifs: 2
+TooManyInstanceVariables:
+  enabled: true
+  exclude: 
+    - 'CalculatorApi'
+  max_instance_variables: 10
+TooManyMethods:
+  enabled: true
+  exclude: []
+  max_methods: 25
+TooManyStatements:
+  enabled: true
+  exclude:
+    - initialize
+    - 'ImporterHelper::Oracle::Smad#converters'
+    - 'ImporterHelper::Oracle::Csad#converters'
+  max_statements: 10
+UncommunicativeMethodName:
+  enabled: true
+  exclude: []
+  reject:
+  - !ruby/regexp /^[a-z]$/
+  - !ruby/regexp /[0-9]$/
+  - !ruby/regexp /[A-Z]/
+  accept: []
+UncommunicativeModuleName:
+  enabled: true
+  exclude: []
+  reject:
+  - !ruby/regexp /^.$/
+  - !ruby/regexp /[0-9]$/
+  accept:
+  - Inline::C
+UncommunicativeParameterName:
+  enabled: true
+  exclude: []
+  reject:
+  - !ruby/regexp /^.$/
+  - !ruby/regexp /[0-9]$/
+  - !ruby/regexp /[A-Z]/
+  - !ruby/regexp /^_/
+  accept: []
+UncommunicativeVariableName:
+  enabled: true
+  exclude:
+    - 'CompareApiSection::LossExperience'
+  reject:
+  - !ruby/regexp /^.$/
+  - !ruby/regexp /[0-9]$/
+  - !ruby/regexp /[A-Z]/
+  accept:
+  - _
+UnusedParameters:
+  enabled: true
+  exclude: []
+UtilityFunction:
+  enabled: true
+  exclude:
+    - 'AuthToken.secret'
+    - 'ApiParser::Glassdoor#query_url'
+    - 'ApiParser::Glassdoor#root_url'
+    - 'CompanyInfo#business_product'
+    - 'CompanyInfo#business_type'
+    - 'DemoGenerator#generate_duns'
+  max_helper_calls: 1

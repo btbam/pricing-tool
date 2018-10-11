@@ -1,0 +1,132 @@
+<div id="peer-section" class="row">
+  <div class="peer-container">
+    <h4 id="peer-header" class="content-heading">
+      <span id="dno-tab" ng-class="{active: peer.dno}" ng-click="peer.setDno()">
+        Peer D&O Policies
+      </span>
+      <span id="epli-tab" ng-class="{active: peer.epli}" ng-click="peer.setEpli()" class="spacer">
+        Peer EPLI Policies
+      </span>
+    </h4>
+    <div class="peer-header-divider"></div>
+
+    <div ng-show="peer.dno" id="dno-container">
+      <div class="peer-stats">
+        <table class="peer-stats-table">
+          <tr>
+            <td>
+              <div class="purple-dot"></div>
+              {{ peer.responseData.data.peer_policies.dno_policies.peer_group.non_zero_policies.total_policies }} Policies
+            </td>
+            <td>
+              <div class="purple-dot"></div>
+              {{ peer.responseData.data.peer_policies.dno_policies.peer_group.max_loss_severity | currency:"$":0 }} = Peer Maximum Loss Severity
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <table class="peer-policies" ts-wrapper>
+        <tr>
+          <th ts-criteria="name" class="name">
+            <span>Name of the Insured</span>
+            <div class ='policy-number policy'>Policy Number</div>
+          </th>
+          <th ts-criteria="sales" class="sales">
+            <span>Sales</span>
+            <div class="policy-year">Policy Year: {{peer.responseData.data.peer_policies.dno_policies.peer_group.nearest_policies ? peer.responseData.data.peer_policies.dno_policies.peer_group.nearest_policies[0].policy_year : ''}}</div>
+          </th>
+          <th ts-criteria="limit" class="limit">
+            <span>Limit</span>
+          </th>
+          <th ts-criteria="retention" class="retention">
+            <span>Retention</span>
+          </th>
+          <th ts-criteria="gwp" class="gwp">
+            <span>GWP</span>
+          </th>
+        </tr>
+        <tr class="current-policy" ng-if="peer.responseData.data.peer_policies.dno_policies.peer_group.current_policy.name">
+          <td class="name">{{peer.responseData.data.peer_policies.dno_policies.peer_group.current_policy.name}}</td>
+          <td class="sales">{{peer.responseData.data.peer_policies.dno_policies.peer_group.current_policy.sales|currency:"$":0}}</td>
+          <td class="limit">{{peer.responseData.data.peer_policies.dno_policies.peer_group.current_policy.limit|currency:"$":0}}</td>
+          <td class="retention">{{peer.responseData.data.peer_policies.dno_policies.peer_group.current_policy.retention|currency:"$":0}}</td>
+          <td class="gwp">{{peer.responseData.data.peer_policies.dno_policies.peer_group.current_policy.gwp|currency:"$":0}}</td>
+        </tr>
+        <tr ng-repeat="peerPolicy in peer.responseData.data.peer_policies.dno_policies.peer_group.nearest_policies | limitTo:peer.result_count_current" ts-repeat>
+          <td class="name">{{peerPolicy.name}}
+            <div class="policy">{{peerPolicy.policy_number}}</div>
+          </td>
+          <td class="sales">{{peerPolicy.sales|currency:"$":0}}</td>
+          <td class="limit">{{peerPolicy.limit|currency:"$":0}}</td>
+          <td class="retention">{{peerPolicy.retention|currency:"$":0}}</td>
+          <td class="gwp">{{peerPolicy.gwp|currency:"$":0}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div ng-show="peer.epli" id="epli-container">
+      <div class="peer-stats">
+        <table class="peer-stats-table">
+          <tr>
+            <td>
+              <div class="purple-dot"></div>
+              {{ peer.responseData.data.peer_policies.epli_policies.peer_group.non_zero_policies.total_policies }}  Policies
+            </td>
+            <td>
+              <div class="purple-dot"></div>
+              {{ peer.responseData.data.peer_policies.epli_policies.peer_group.max_loss_severity | currency:"$":0 }} = Peer Maximum Loss Severity
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <table class="peer-policies" ts-wrapper>
+        <tr>
+          <th ts-criteria="name" class="name">
+            <span>Name of the Insured</span>
+            <div class ='policy-number policy'>Policy Number</div>
+          </th>
+          <th ts-criteria="employee_count" class="employees">
+            <span>Employees</span>
+            <div class="policy-year">Policy Year: {{peer.responseData.data.peer_policies.epli_policies.peer_group.nearest_policies ? peer.responseData.data.peer_policies.epli_policies.peer_group.nearest_policies[0].policy_year : ''}}</div>
+          </th>
+          <th ts-criteria="limit" class="limit">
+            <span>Limit</span>
+          </th>
+          <th ts-criteria="retention" class="retention">
+            <span>Retention</span>
+          </th>
+          <th ts-criteria="gwp" class="gwp">
+            <span>GWP</span>
+          </th>
+        </tr>
+        <tr class="current-policy" ng-if="peer.responseData.data.peer_policies.dno_policies.peer_group.current_policy.name">
+          <td class="name">{{peer.responseData.data.peer_policies.dno_policies.peer_group.current_policy.name}}</td>
+          <td class="employees">{{peer.responseData.data.peer_policies.dno_policies.peer_group.current_policy.employee_count|currency:"":0}}</td>
+          <td class="limit">{{peer.responseData.data.peer_policies.dno_policies.peer_group.current_policy.limit|currency:"$":0}}</td>
+          <td class="retention">{{peer.responseData.data.peer_policies.dno_policies.peer_group.current_policy.retention|currency:"$":0}}</td>
+          <td class="gwp">{{peer.responseData.data.peer_policies.dno_policies.peer_group.current_policy.gwp|currency:"$":0}}</td>
+        </tr>
+        <tr ng-repeat="peerPolicy in peer.responseData.data.peer_policies.epli_policies.peer_group.nearest_policies | limitTo:peer.result_count_current" ts-repeat>
+          <td class="name">{{peerPolicy.name}}
+            <div class="policy">{{peerPolicy.policy_number}}</div></td>
+          <td class="employees">{{peerPolicy.employee_count|currency:"":0}}</td>
+          <td class="limit">{{peerPolicy.limit|currency:"$":0}}</td>
+          <td class="retention">{{peerPolicy.retention|currency:"$":0}}</td>
+          <td class="gwp">{{peerPolicy.gwp|currency:"$":0}}</td>
+        </tr>
+      </table>
+    </div>
+
+      <div class="show-more pull-right" ng-class="{active: result_counts_visible}"
+        ng-mouseenter="result_counts_visible=true" ng-mouseleave="result_counts_visible=false">
+        Show
+        <div class="show-more-links" ng-show="result_counts_visible">
+          <a href="" ng-repeat="resultCount in peer.result_counts"
+            ng-click="peer.changeResults(resultCount)"
+            ng-class="{active: resultCount == peer.result_count_current}">{{resultCount}} Peer Policies</a>
+        </div>
+      </div>
+  </div>
+</div>

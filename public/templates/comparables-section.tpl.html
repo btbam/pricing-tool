@@ -1,0 +1,16 @@
+<div class="title" ng-bind="info.title"></div>
+<div class="subtitle" ng-if="info.subtitle" ng-bind="info.subtitle"></div>
+<div></div>
+<div class="year" ng-if="info.years" ng-bind="info.years"></div>
+<div class="key" ng-if="info.years" ng-bind="info.yearKeyChar"></div>
+<div></div>
+<select class="dropdown book-dropdown" name="test" id="test" ng-if="info.dropdown">
+  <option ng-repeat="(k, v) in info.dropdown" value="{{k}}">{{v}}</option>
+</select>
+<div class="total-policies" ng-if="info.totalPolicies"><span ng-bind="info.totalPolicies"></span> total policies</div>
+<div class="claim-count" ng-if="info.totalClaims"><span ng-bind="info.totalClaims"></span> with claims</div>
+<div class="graph"><div ng-transclude></div></div>
+<div class="rate" ng-if="info.rate" ng-bind="info.rate"></div>
+<div class="key" ng-if="info.rateKeyChar" ng-bind="info.rateKeyChar">{{info.rateKeyChar}}</div>
+<div></div>
+<div class="rate-percentage" ng-if="info.percentRate" ng-bind="info.percentRate">{{info.percentRate}}</div>

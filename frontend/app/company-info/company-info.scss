@@ -1,0 +1,142 @@
+@import '../shared/globalvars.scss';
+company-info {
+  float:left;
+  .companyInfo {
+    position: static;
+    width: 260px;
+    box-sizing: content-box;
+    word-wrap: break-word;
+    font-family: $robotoregular;
+    padding-bottom: 65px;
+    padding-left: 15px;
+    h2 {
+      font-family: $robotomedium;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color:#FFF;
+      line-height: 28px;
+      margin-bottom: 0;
+    }
+
+    .dropdown-container {
+      margin-left: 15px;
+    }
+    .industry-select {
+      background: transparent;
+      max-width: 300px;
+      color: black;
+      font-size: 14px;
+    }
+    .dropdown-overlay {
+      max-width: 300px;
+      color: #fff;
+      font-size: 14px;
+      background-color: transparent;
+    }
+  }
+  address {
+    color: #EDEEF5;
+    line-height: 16px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-left: 15px;
+
+    .address {
+      .street-address {
+        display: block;
+      }
+      .city:after {
+        content: ',';
+      }
+    }
+  }
+  a.company-url {
+    color: #81aaf7;
+    text-decoration: underline;
+  }
+  .meta {
+    padding-left: 0;
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #EDEEF5;
+    line-height: 16px;
+    margin-left: 15px;
+
+    li {
+      list-style-type: none;
+      .section-label {
+        color: #fff;
+        font-family: $robotoregular;
+      }
+    }
+  }
+  .bankruptcy-chance {
+    font-size: 16px;
+    color: #fff;
+    font-family: $robotoregular;
+    .value {
+      padding: 2px 6px;
+      border-radius: 3px;
+      &.green{
+        background-color:#62BF69;
+      }
+      &.orange{
+        background-color: #D8B148;
+      }
+      &.red{
+        background-color: #d84848;
+      }
+    }
+  }
+
+  .jump-to{
+    position: absolute;
+    font-size: 18px;
+    line-height: 26px;
+    z-index: 70;
+    bottom: 0;
+    font-family: $robotoregular;
+
+    img { margin-left:5px; }
+
+    .btn.btn-default{
+      background:#A3B3C1;
+      border-radius:2px 2px 0 0;
+      border: 0px;
+      width: 130px;
+      color: white;
+    }
+    .span{
+      color: rgba(255,255,255,.7);
+    }
+
+    ul.dropdown-menu {
+      cursor: pointer;
+      margin-top:0;
+      border-radius:0 0 2px 2px;
+
+      a:hover {
+        background:none;
+        color:#999;
+      }
+    }
+
+    &.sticky {
+      position: fixed;
+      top: 0;
+      height: 30px;
+
+      ul.dropdown-menu {
+        position: absolute;
+        top: 30px;
+        margin-top:2px;
+      }
+    }
+  }
+  /* open dropdown on hover */
+  .dropdown.jump-to:hover {
+    ul.dropdown-menu  {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<div ng-class="{navbar_search_container: !search.mainSearchActive}" class='search-container'>
+  <h2 class="search-heading">Search For an Entity</h2>
+
+  <div class="input-group input-group-lg">
+    <input type="text" class="form-control" ng-model="searchTerm" placeholder="Name or D&amp;B #"
+    typeahead="company as company.name for company in search.getCompanySearch(searchTerm)"
+    typeahead-loading="search.loadingCompanies()" class="form-control"
+    typeahead-template-url="search/selectResultsRow.html"
+    typeahead-input-formatter="search.formatLabel($model)"
+    typeahead-on-select='search.onSelect($item, $model, $label)'
+    typeahead-wait-ms='250'
+    analytics-on='focus'
+    analytics-if='shouldTrack'
+    analytics-event='Focused Search'
+    ng-change="search.updateSearchTerm(searchTerm)"
+    ng-model-options="{debounce: 500}"
+    ng-click="search.clearSearchInput();search.clearTypeahead($event)"
+    />
+    <div class="input-group-btn">
+      <button class="btn btn-default btn-main-search" ng-click="search.showAllSearchToggle()"><i class="fa fa-search"></i></button>
+    </div>
+  </div>
+  <div id="view-history" ng-show="search.mainSearchActive">
+    <a href="" class="view-history" ng-mouseenter="search.showHistory()" ng-hide="search.historyVisible">View History</a>
+    <ul ng-if="search.historyVisible" ng-mouseleave="search.historyVisible = false">
+      <li ng-hide="search.history.length" class="no-history">No recent history to display.</li>
+      <li ng-repeat="h in search.history track by $index" ng-click="search.selectHistory(h.duns_number)"><span class="entity-name">{{h.name}}</span>
+        <a href="" class="remove pull-right" ng-click="search.removeHistory(h.duns_number);$event.stopPropagation()">Remove Me</a></li>
+    </ul>
+  </div>
+</div>
+
+<div ng-show="search.isLoading" class="searchLoading">
+  <div class="loader"></div>
+</div>

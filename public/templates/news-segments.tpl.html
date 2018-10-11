@@ -1,0 +1,9 @@
+
+<div class="col" ng-repeat="(key,value) in info">
+  <div class="title" ng-bind="key | capitalize"></div>
+  <div class="content">
+    <ul>
+      <li ng-repeat = "article in value"><a ng-href="{{article.url}}">{{article.title}}</a></li>
+    </ul>
+  </div>
+</div>

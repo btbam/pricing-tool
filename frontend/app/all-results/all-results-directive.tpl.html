@@ -1,0 +1,44 @@
+<div class="all-results-input search-container">
+  <input type="text" class="form-control"
+    placeholder="Name or D&amp;B #"
+    ng-model="allResults.searchTerm"
+    ng-change="allResults.loadMore(allResults.searchTerm)"
+    ng-model-options="{debounce: 500}"
+    ng-click="allResults.clearSearchInput()"
+    /><i class="go fa fa-search" tabindex="0"></i>
+</div>
+<span class="show-all-header" style="padding-top: 125px;">
+  <div class="all-results-heading">
+    <span class="results-count">All Results</span>
+    <div class="search-column company-name company-name-col-heading">
+      Entity Name
+    </div>
+    <div class="search-column company-duns">
+      D&amp;B #
+    </div>
+    <div class="search-column company-location">Location</div>
+    <div class="search-column company-sales sortable" ng-click="allResults.sortBy('sales_volume')">Sales Revenue <i class="fa" ng-class="{'fa-sort':allResults.sortingBy == 'sales_volume'}"></i></div>
+    <div class="search-column company-global-employees sortable" ng-click="allResults.sortBy('global_employee_total')">Employees <i class="fa" ng-class="{'fa-sort':allResults.sortingBy == 'global_employee_total'}"></i></div>
+    <div class="search-column company-customer sortable" ng-click="allResults.toggleCustomer()">Customer (past/present) <i ng-show="allResults.customerOn != ''" class="fa" ng-class="{'fa-sort-asc':allResults.customerOn == 'yes', 'fa-sort-desc':allResults.customerOn == 'no'}"></i></div>
+    <!-- add 'global_employee_total' -->
+  </div>
+  <div class="all-results-container">
+    <div class="all-results-table">
+      <div class="row" ng-class="['even', 'odd'][$index %2]" ng-repeat="company in allResults.companies" ng-click="allResults.goToCompanyPage(company.duns_number)">
+        <div class="search-column company-name">{{company.name}}</div>
+        <div class="search-column company-duns">{{company.duns_number}}</div>
+        <div class="search-column company-location">
+          <span class="dull">{{company.street_address}}</span><br />
+          <span>{{company.city}}, {{company.state}}</span>
+        </div>
+        <div class="search-column company-sales">{{company.sales_volume | shortened:'$'}}</div>
+        <div class="search-column company-global-employees">{{company.global_employee_total}}</div>
+        <div class="search-column company-customer">{{company.customer}}</div>
+      </div>
+    </div>
+  </div>
+</span>
+
+<div ng-show="allResults.isLoading" class="searchLoading">
+  <div class="loader"></div>
+</div>

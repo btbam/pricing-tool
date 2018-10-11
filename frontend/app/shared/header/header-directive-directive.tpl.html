@@ -1,0 +1,19 @@
+
+<div ng-hide='state!="search"' class='container'>
+  <header class='row'>
+    <div class='col-xs-3'>
+      <div class="navbar-header">
+        <h1 id="logo"><a ui-sref="search">pricing-tool</a></h1>
+      </div>
+    </div>
+
+    <div class='col-xs-6'>
+      <search ng-if='currentState != "all-results"'></search>
+    </div>
+
+    <div class='col-xs-3 text-right'>
+        <a ng-show="user.email" href="#" class="user-name" ng-bind="user.email"></a>
+        <a ng-hide="user.email" ui-sref="signIn">Sign in</a>
+    </div>
+  </header>
+</div>

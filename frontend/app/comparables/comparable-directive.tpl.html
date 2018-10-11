@@ -1,0 +1,45 @@
+<h4 class="content-heading" id="loss-header" ng-if="comparable.section == 'loss_experience'">
+  <span id="dno-tab" ng-class="{active: comparable.s.shared_data.loss_tab=='do'}" ng-click="comparable.setDno()">
+    D&O Global Loss Ratio
+  </span>
+  <span id="epli-tab" ng-class="{active: comparable.s.shared_data.loss_tab=='epli'}" ng-click="comparable.setEpli()" class="spacer">
+    EPLI Global Loss Ratio
+  </span>
+</h4>
+<div class="peer-header-divider" ng-if="comparable.section == 'loss_experience'"></div>
+
+<div class="comparables-container">
+  <div class="selection-totals-container">
+    <div class="graph-section" id="{{comparable.section}}_graph_container">
+      <div class="graph-axis" style="margin-left:-{{comparable.graphData.axis.pointWidth/2}}px;">
+        <div class="graph-axis-value" ng-repeat="tick in comparable.graphData.axis.ticks" style="width:{{comparable.graphData.axis.pointWidth}}px;">
+          {{tick}}%
+          <div class="graph-axis-tick" ng-class="{first: tick == 0}"></div>
+        </div>
+        <div class="graph-axis-line" style="left:{{comparable.graphData.axis.pointWidth/2}}px;width:{{comparable.graphData.axis.graphWidth}}px;"></div>
+      </div>
+
+      <div class="data" ng-repeat="data in comparable.graphData">
+        <div ng-if="data.show_select" class="title-container">
+          <div class="title dropdown-container" id="{{comparable.section}}_select_container">
+            <div class="dropdown-overlay" ng-bind="comparable.data.menu_select"></div>
+            <select ng-class="{'hide-select' : comparable.hideSelect}" ng-if="comparable.data.menu" class="styled-select" ng-model="comparable.data.menu_select"
+              ng-change="comparable.changedItemSelected()" ng-options="item for item in comparable.data.menu" id="{{comparable.section}}_select">
+            </select>
+          </div>
+        </div>
+
+        <span ng-if="!data.show_select" class="title" ng-bind="data.title"></span>
+        <span class="value" ng-bind="(data.value | formatPercentFromNumber)"></span>%
+        <span class="display" style="width:{{(data.percentMax)*comparable.graphData.axis.graphWidth}}px"></span>
+      </div>
+
+    </div>
+
+    <div class="policies-counts-container">
+      <div class="total-policies"><span ng-bind='(comparable.data.total_policies | formatZeroOrNA)'></span> total policies</div>
+      <div class="claim-count"><span ng-bind='(comparable.data.total_policies_with_claims | formatZeroOrNA)'></span> total policies w/ paid claims</div>
+    </div>
+
+  </div>
+</div>

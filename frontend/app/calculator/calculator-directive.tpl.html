@@ -1,0 +1,504 @@
+<div id="calculator-section-ballpark">
+  <div class='section-header'>
+    <div class='header-left'>
+      <p class='final' ng-bind='(calculator.data.ballpark_premium | currency:$:0)'></p>
+      <p class='benchmark' ng-bind='(calculator.data.ballpark_benchmark_premium | currency:$:0)'></p>
+    </div>
+    <div class='header-right'>
+      <p>
+        <span class="percent-change">
+          <i class="fa fa-caret-{{calculator.data.ballparkPercent.percent_change_direction}}"></i>
+          <span class="change-value" ng-bind='calculator.data.ballparkPercent.percent_change'></span>
+        </span>
+      <div class='blue-star'></div>
+      </p>
+      <p class='lbl'>Ballpark</p>
+      <p class='lbl small'>Benchmark</p>
+    </div>
+  </div>
+  <div class='calculator-section'>
+    <div class='col-xs-12'>
+      <div class='row'>
+        <div class='col-xs-6'>
+          <label class='section-label'>Assets</label>
+          <input type='text' class='section-value form-control'
+                 ng-change="calculator.calculateDataWithTimeout()"
+                 ng-model='calculator.data.assets' fcsa-number
+            />
+        </div>
+        <div class='col-xs-6'>
+          <label class='section-label'>Years in Operation</label>
+          <input type='text' class='section-value form-control'
+                 ng-change="calculator.calculateDataWithTimeout()"
+                 ng-model='calculator.data.years_in_operation'
+            />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section-spacer"></div>
+
+
+<div id="calculator-section-dno">
+  <div class='section-header'>
+    <div class='header-left'>
+      <p class='final' ng-bind='(calculator.data.dno_factors.final_premium | currency:$:0)'></p>
+      <p class='benchmark' ng-bind='(calculator.data.dno_factors.benchmark_premium | currency:$:0)'></p>
+      <p class='off-manual'> <span ng-bind='(calculator.data.dno_factors.off_manual | number:2)'></span>x </p>
+    </div>
+    <div class='header-right'>
+      <p>
+        <span class="percent-change">
+          <i class='fa fa-caret-{{calculator.data.dno_factors.percent_change_direction}}'></i>
+          <span class="change-value" ng-bind='calculator.data.dno_factors.percent_change'></span>
+        </span>
+      </p>
+      <i class='toggle' ng-click='calculator.toggleDno()' ng-class='(calculator.collapseDno ? "toggle-off" : "toggle-on")'></i>
+      <p class='lbl'>D&O</p>
+      <p class='lbl small'>Benchmark</p>
+      <p class='lbl small'>Off-Manual</p>
+    </div>
+  </div>
+  <div class='calculator-section' collapse='calculator.collapseDno'>
+    <div class='col-xs-12'>
+      <div class='row'>
+        <div class='col-xs-6'>
+          <label class='section-label'>Limit</label>
+          <input type='text' class='section-value form-control'
+                 ng-change="calculator.calculateDataWithTimeout('DNO')"
+                 ng-model='calculator.data.dno_factors.limit' fcsa-number
+            />
+        </div>
+        <div class='col-xs-6'>
+          <label class='section-label'>Retention</label>
+          <input type='text' class='section-value form-control'
+                 ng-change="calculator.calculateDataWithTimeout('DNO')"
+                 ng-model='calculator.data.dno_factors.retention' fcsa-number
+            />
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-xs-3'>
+          <label class='section-label'>Claims History</label>
+        </div>
+        <div class='col-xs-3'>
+          <input type='text' class='section-value form-control'
+                 ng-change='calculator.setDNOasChanged();calculator.checkFactorErrors("claims_history_factor", 1, 1, Infinity)'
+                 ng-model='calculator.data.dno_factors.claims_history_factor'
+            />
+        </div>
+        <div class='col-xs-3'>
+          <label class='section-label'>Financial Condition</label>
+        </div>
+        <div class='col-xs-3'>
+          <input type='text' class='section-value form-control'
+                 ng-change='calculator.setDNOasChanged();calculator.checkFactorErrors("financial_conditions", 1, 1, Infinity)'
+                 ng-model='calculator.data.dno_factors.financial_conditions'
+            />
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-xs-3'>
+          <label class='section-label'>Industry</label>
+        </div>
+        <div class='col-xs-3'>
+          <input type='text' class='section-value form-control'
+                 ng-model='calculator.data.dno_factors.industry'
+                 ng-change="calculator.calculateDataWithTimeout('DNO')"
+            />
+        </div>
+        <div class='col-xs-3'>
+          <label class='section-label'>Yrs in Operation</label>
+        </div>
+        <div class='col-xs-3'>
+          <input type='text' class='section-value form-control'
+                 ng-change='calculator.setDNOasChanged();calculator.checkFactorErrors("years_in_operation_selected", calculator.data.years_in_operation.min, calculator.data.years_in_operation.midpoint, calculator.data.years_in_operation.max)'
+                 ng-model='calculator.data.dno_factors.years_in_operation_selected'
+            />
+        </div>
+      </div>
+
+
+      <div class='row'>
+        <div class='col-xs-3'>
+          <label class='section-label'>M&A</label>
+        </div>
+        <div class='col-xs-3'>
+          <input type='text' class='section-value form-control'
+                 ng-change='calculator.setDNOasChanged();calculator.checkFactorErrors("mergers_and_acquisitions", .8, 1, 1.5)'
+                 ng-model='calculator.data.dno_factors.mergers_and_acquisitions'
+            />
+        </div>
+        <div class='col-xs-3'>
+          <label class='section-label'>Entity/Non Entity</label>
+        </div>
+        <div class='col-xs-3'>
+          <input type='text' class='section-value form-control'
+                 ng-change='calculator.setDNOasChanged();calculator.checkFactorErrors("entity_nonentity_coverage", .8, 1, 1)'
+                 ng-model='calculator.data.dno_factors.entity_nonentity_coverage'
+            />
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-xs-3'>
+          <label class='section-label'>MGMT</label>
+        </div>
+        <div class='col-xs-3'>
+          <input type='text' class='section-value form-control'
+                 ng-change='calculator.setDNOasChanged();calculator.checkFactorErrors("management_experience_qualifications", .80, 1, 1.3)'
+                 ng-model='calculator.data.dno_factors.management_experience_qualifications'
+            />
+        </div>
+        <div class='col-xs-3'>
+          <label class='section-label'>Revenue/ Asset/Reg</label>
+        </div>
+        <div class='col-xs-3'>
+          <input type='text' class='section-value form-control'
+                 ng-change='calculator.setDNOasChanged();calculator.checkFactorErrors("revenue_asset_irregularities", 1, 1, 1.75)'
+                 ng-model='calculator.data.dno_factors.revenue_asset_irregularities'
+            />
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-xs-3'>
+          <label class='section-label'>Private Company</label>
+        </div>
+        <div class='col-xs-3'>
+          <input type='text' class='section-value form-control'
+                 ng-change='calculator.setDNOasChanged();calculator.checkFactorErrors("private_company_factor", 0.8, 1, 1.5)'
+                 ng-model='calculator.data.dno_factors.private_company_factor'
+            />
+        </div>
+        <div class='col-xs-3'>
+          <label class='section-label'>Specialty Coverage</label>
+        </div>
+        <div class='col-xs-3'>
+          <input type='text' class='section-value form-control'
+                 ng-change='calculator.setDNOasChanged();calculator.checkFactorErrors("specialty_coverage_factor", 0.7, 1, 1.4)'
+                 ng-model='calculator.data.dno_factors.specialty_coverage_factor'
+            />
+        </div>
+      </div>
+    </div>
+    <button class="section-restore-values-button" ng-hide= "calculator.changed_dno_data===false" ng-click="calculator.getDnoData()">Restore Default D&O Values</button>
+  </div>
+</div>
+
+
+<div class="section-spacer"></div>
+
+
+<div id="calculator-section-epli">
+  <div class='section-header'>
+    <div class='header-left'>
+      <p class='final' ng-bind='(calculator.data.epli_factors.final_premium | currency:$:0)'></p>
+      <p class='benchmark' ng-bind='(calculator.data.epli_factors.benchmark_premium | currency:$:0)'></p>
+      <p class='off-manual'> <span ng-bind='(calculator.data.epli_factors.off_manual | number:2)'></span>x </p>
+    </div>
+    <div class='header-right'>
+      <p>
+        <span class="percent-change">
+         <i class="fa fa-caret-{{calculator.data.epli_factors.percent_change_direction}}"></i>
+          <span class="change-value" ng-bind='calculator.data.epli_factors.percent_change'></span>
+        </span>
+      </p>
+      <i class='toggle' ng-click='calculator.toggleEpli()' ng-class='(calculator.collapseEpli ? "toggle-off" : "toggle-on")'></i>
+      <p class='lbl'>EPLI</p>
+      <p class='lbl small'>Benchmark</p>
+      <p class='lbl small'>Off-Manual</p>
+    </div>
+  </div>
+  <div class='calculator-section' collapse='calculator.collapseEpli'>
+    <div class='col-xs-12'>
+      <div class='row'>
+        <div class='col-xs-6'>
+          <label class='section-label'>Limit</label>
+          <input type='text' class='section-value form-control'
+                 ng-change="calculator.calculateDataWithTimeout('EPLI')"
+                 ng-model='calculator.data.epli_factors.limit' fcsa-number
+            />
+        </div>
+        <div class='col-xs-6'>
+          <label class='section-label'>Retention</label>
+          <input type='text' class='section-value form-control'
+                 ng-change="calculator.calculateDataWithTimeout('EPLI')"
+                 ng-model='calculator.data.epli_factors.retention' fcsa-number
+            />
+        </div>
+      </div>
+      <div class='calculator-inner-section other'>
+
+
+        <label class='  section-label  section-total-top  section-total-header section-total-label-font'>Total Employees</label>
+        <label class='  section-label  section-total-top section-total-value section-total-label-font'>{{calculator.data.epli_factors.total_ratable_employees}}</label>
+
+
+        <div class='row'>
+          <div class='col-xs-3 col-xs-offset-3'>
+            <label class='section-label text-left'>Domestic Non-Union</label>
+          </div>
+          <div class='col-xs-3'>
+            <label class='section-label text-left'>Domestic Union</label>
+          </div>
+          <div class='col-xs-3'>
+            <label class='section-label text-left'>Foreign</label>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-xs-3'>
+            <label class='section-label text-right'>Full Time</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.input_by_user_employees.full.non_union'
+                   ng-change="calculator.sumInputValues('full', 'non_union')"
+              />
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.input_by_user_employees.full.union'
+                   ng-change="calculator.sumInputValues('full', 'union')"
+              />
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.input_by_user_employees.full.foreign'
+                   ng-change="calculator.sumInputValues('full', 'foreign')"
+              />
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-xs-3'>
+            <label class='section-label text-right'>Part Time</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.input_by_user_employees.part.non_union'
+                   ng-change="calculator.sumInputValues('part', 'non_union')"
+              />
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.input_by_user_employees.part.union'
+                   ng-change="calculator.sumInputValues('part', 'union')"
+              />
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.input_by_user_employees.part.foreign'
+                   ng-change="calculator.sumInputValues('part', 'foreign')"
+              />
+          </div>
+        </div>
+      </div>
+      <div class='calculator-inner-section california'>
+
+
+        <label class='section-label section-total-top  section-total-header section-california-label-font'>of which California</label>
+        <label class='section-label section-total-top section-total-value section-total-label-font'>{{calculator.data.epli_factors.ca_ratable_employees}}</label>
+
+
+        <div class='row'>
+          <div class='col-xs-3 col-xs-offset-3'>
+            <label class='section-label text-left'>Non-Union</label>
+          </div>
+          <div class='col-xs-3'>
+            <label class='section-label text-left'>Union</label>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-xs-3'>
+            <label class='section-label text-right'>Full Time</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.ca_employees.full.non_union'
+                   ng-change="calculator.sumInputValues('full', 'non_union')"
+              />
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.ca_employees.full.union'
+                   ng-change="calculator.sumInputValues('full', 'union')"
+              />
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-xs-3'>
+            <label class='section-label text-right'>Part Time</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.ca_employees.part.non_union'
+                   ng-change="calculator.sumInputValues('part', 'non_union')"
+              />
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.ca_employees.part.union'
+                   ng-change="calculator.sumInputValues('part', 'union')"
+              />
+          </div>
+        </div>
+      </div>
+
+      <div class='calculator-inner-section dcmifltx'>
+        <label class='section-label section-total-top section-total-header section-dcmifltx-label-font'>of which DC/MI/FL/TX</label>
+        <label class='section-label section-total-top section-total-value section-total-label-font'>{{calculator.data.epli_factors.dcflmitx_ratable_employees}}</label>
+
+
+        <div class='row'>
+          <div class='col-xs-3 col-xs-offset-3'>
+            <label class='section-label text-left'>Non-Union</label>
+          </div>
+          <div class='col-xs-3'>
+            <label class='section-label text-left'>Union</label>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-xs-3'>
+            <label class='section-label text-right'>Full Time</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.dcflmitx_employees.full.non_union'
+                   ng-change="calculator.sumInputValues('full', 'non_union')"
+              />
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.dcflmitx_employees.full.union'
+                   ng-change="calculator.sumInputValues('full', 'union')"
+              />
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-xs-3'>
+            <label class='section-label text-right'>Part Time</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.dcflmitx_employees.part.non_union'
+                   ng-change="calculator.sumInputValues('part', 'non_union')"
+              />
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-model='calculator.dcflmitx_employees.part.union'
+                   ng-change="calculator.sumInputValues('part', 'union')"
+              />
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class='calculator-inner-section'>
+        <div class='row'>
+          <div class='col-xs-12'>
+            <h3>EPLI Factors</h3>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-xs-3'>
+            <label class='section-label'>Human Resources</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text'
+                   class='section-value form-control'
+                   ng-model='calculator.data.epli_factors.human_resources_and_loss_prevention'
+                   ng-change='calculator.setEPLIasChanged();calculator.checkFactorErrorsEpli("human_resources_and_loss_prevention", calculator.data.epli_factors.renewal, [0.75, Infinity], [0.8, 1.5])'
+              />
+          </div>
+          <div class='col-xs-3'>
+            <label class='section-label'>Workforce MGMT</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text'
+                   class='section-value form-control'
+                   ng-model='calculator.data.epli_factors.workforce_mgmt'
+                   ng-change='calculator.setEPLIasChanged();calculator.checkFactorErrorsEpli("workforce_mgmt", calculator.data.epli_factors.renewal, [0.75, Infinity], [0.8, 1.5])'
+              />
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-xs-3'>
+            <label class='section-label'>Incident MGMT</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text'
+                   class='section-value form-control'
+                   ng-model='calculator.data.epli_factors.incident_mgmt'
+                   ng-change='calculator.setEPLIasChanged();calculator.checkFactorErrorsEpli("incident_mgmt", calculator.data.epli_factors.renewal, [0.75, Infinity], [0.8, 1.5])'
+              />
+          </div>
+          <div class='col-xs-3'>
+            <label class='section-label'>Financial Condition</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text'
+                   class='section-value form-control'
+                   ng-model='calculator.data.epli_factors.financial_conditions'
+                   ng-change='calculator.setEPLIasChanged();calculator.checkFactorErrorsEpli("financial_conditions", calculator.data.epli_factors.renewal, [0.512, 3.375], [0.512, 3.375])'
+              />
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-xs-3'>
+            <label class='section-label'>Claims Reporting</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text'
+                   class='section-value form-control'
+                   ng-model='calculator.data.epli_factors.claims_reporting_procedures'
+                   ng-change='calculator.setEPLIasChanged();calculator.checkFactorErrorsEpli("claims_reporting_procedures", calculator.data.epli_factors.renewal, [0.75, Infinity], [0.8, 1.5])'
+              />
+          </div>
+          <div class='col-xs-3'>
+            <label class='section-label'>Ind/3rd Party</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text'
+                   class='section-value form-control'
+                   ng-model='calculator.data.epli_factors.industry_third_party'
+                   ng-change='calculator.setEPLIasChanged();calculator.checkFactorErrorsEpli("industry_third_party", calculator.data.epli_factors.renewal, [0.8, 1.5], [0.8, 1.5])'
+              />
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-xs-3'>
+            <label class='section-label'>Claims History</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text'
+                   class='section-value form-control'
+                   ng-model='calculator.data.epli_factors.claims_history'
+                   ng-change='calculator.setEPLIasChanged();calculator.checkFactorErrorsEpli("claims_history", calculator.data.epli_factors.renewal, [0, 1], [0.8, 1.5])'
+              />
+          </div>
+          <div class='col-xs-3'>
+            <label class='section-label'>Yrs in Operation</label>
+          </div>
+          <div class='col-xs-3'>
+            <input type='text' class='section-value form-control'
+                   ng-change='calculator.setEPLIasChanged();calculator.checkFactorErrorsEpli("years_in_operation_selected", calculator.data.epli_factors.renewal, [0.85, 1.25], [0.85, 1.25])'
+                   ng-model='calculator.data.epli_factors.years_in_operation_selected'
+              />
+          </div>
+        </div>
+      </div>
+      <button class="section-restore-values-button"  ng-hide="calculator.changed_epli_data===false" ng-click="calculator.getEPLIData()">Restore Default EPLI Values</button>
+    </div>
+  </div>
+</div>

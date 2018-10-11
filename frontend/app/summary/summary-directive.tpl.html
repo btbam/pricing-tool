@@ -1,0 +1,21 @@
+<div class="panels graphs">
+  <div class="summary-data-container">
+    <div class="summary-data">
+      <div class="revenue-and-employees graphs-container row">
+        <div class="row">
+          <div class="benchmark summary-benchmark graph-container">
+            <graph-benchmark-bar graphdata="{{shared_data.benchmark_data}}"></graph-benchmark-bar>
+          </div>
+          </div>
+        <div class="row">
+        <div class="stress-score summary-stress-score graph-container">
+          <div class="summary-section-title">Financial Stress Score</div>
+          <graph-financial-stress-bar graphdata="{{summary.companyData.company.financial_stress}}">
+          </graph-financial-stress-bar>
+        </div>
+
+      </div>
+        </div>
+    </div>
+  </div>
+</div>

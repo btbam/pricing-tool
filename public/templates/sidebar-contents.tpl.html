@@ -1,0 +1,45 @@
+<h2>{{companyName}}</h2>
+<address>
+  D&amp;B: #: {{dunsNumber}}<br>
+  <span ng-if="companyUrl != 'N/A'"><a href="{{companyUrl}}" class="company-url">{{companyUrlFormatted}}</a><br></span>
+  {{companyDnbState}} {{companyZip}}
+</address>
+
+<ul class="meta">
+  <li ng-if="companyHQState"><b>HQ:</b> {{companyHQState}}</li>
+  <li ng-if="industryCode"><b>Industry:</b> {{industryCode}}</li>
+  <li><b>Ownership:</b>
+    {{companyPublic}}
+  </span></li>
+  <li><b>Years In Operation:</b>
+    {{startYear}}
+  </span></li>
+</ul>
+
+<div ng-if="showRapidPremium" class="rapid-premium-container">
+ <h3>Rapid Premium</h3>
+ <span class="premium">{{rapidPremiumData.value | currency:undefined:0}}</span>
+ <span class="percent" ng-if="rapidPremiumData.percent" ng-class="{'up': percentUpDown == 'up', 'down': percentUpDown == 'down'}">
+   <i class="fa" ng-class="{'fa-caret-up': percentUpDown == 'up', 'fa-caret-down': percentUpDown == 'down'}"></i> {{rapidPremiumData.percent}}%
+ </span>
+ <span ng-if="rapidPremiumData.benchmark" class="benchmark clearfix"><a href="#" class="info">i</a> Benchmark: {{rapidPremiumData.benchmark | currency:undefined:0}}</span>
+ <span class="confidence">Confidence in Model Guidance</span>
+ <span ng-if="rapidPremiumData.medium" class="medium">Medium: {{rapidPremiumData.medium}}</span>
+ <div class="factors">
+  <span class="pull-left factor-headings">Show Detail</span>
+  <span class="pull-right factor-headings">Adjust</span>
+  <div ng-repeat="factor in rapidPremiumData.factors" class="factor">
+    <span class="factor-title"><input type="checkbox" /> {{factor.title | limitTo: 33}}{{factor.title.length > 33 ? '&#8230;' : ''}}</span>
+    <span ng-bind="factor.adjust" class="factor-adjust"></span>
+  </div>
+ </div>
+</div>
+<div ng-if="!showRapidPremium">
+  <a href="#" class="start-rapid-premium" ng-click="showRapidPremiumClicked()">
+    Start Rapid Premium
+  </a>
+</div>
+
+<a href="#" class="export">
+  <i class="fa fa-mail-reply"></i> Export to CCUW
+</a>

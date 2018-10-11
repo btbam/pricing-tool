@@ -1,0 +1,59 @@
+@import '../shared/globalvars.scss';
+summary {
+  font-family: $robotolight;
+  min-height: 429px;
+
+  .view-container {
+    position: relative;
+    z-index: 175;
+  }
+
+  .summary-data-container {
+    .summary-data {
+      box-sizing: border-box;
+      padding: 0;
+      margin-bottom: 0;
+    }
+    .bankruptcy-chart {
+      padding-top: 5px;
+    }
+  }
+
+  graph-bankruptcy {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .bankruptcy-description {
+    vertical-align: top;
+    display: inline-block;
+    line-height: 20px;
+    width: 470px;
+    padding-top: 32px;
+    padding-left: 25px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+
+  .summary-section-title {
+    font-family: $robotoregular;
+    color: #c7d0d9;
+    font-size: 18px;
+    text-align:center;
+    padding-top: 35px;
+  }
+
+  .revenue-and-employees.graphs-container {
+    position: absolute;
+    bottom: 0;
+    z-index: 55;
+    left: 400px;
+  }
+
+  .description {
+    &.no-bankruptcy-data {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
+}

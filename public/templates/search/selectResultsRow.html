@@ -1,0 +1,7 @@
+<span ng-class="{bold: match.model.type === 'all'}" class="label">
+  <span bind-html-unsafe="match.model.name | typeaheadHighlight:query"></span>
+  <span class="duns_number" ng-if="match.model.duns_number" bind-html-unsafe="match.model.duns_number | typeaheadHighlight:query"></span>
+  <span class="state_city" ng-if="match.model.state && match.model.city">
+    <span class="city" bind-html-unsafe="match.model.city | typeaheadHighlight:query"></span>, <span class="state" bind-html-unsafe="match.model.state | typeaheadHighlight:query"></span>
+  </span>
+</span>

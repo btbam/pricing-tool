@@ -1,0 +1,45 @@
+@import '../shared/globalvars.scss';
+
+graph-radial-financial-health {
+  position: relative;
+  display: block;
+  width: 215px;
+  height: 200px;
+  top: 55px;
+
+  .labels {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    z-index: 70;
+    white-space: nowrap;
+    font-size: 16px;
+    font-family: $robotoregular;
+    line-height: 23px;
+    text-align: right;
+    width: 140px;
+    left: -62px;
+    color: #E2E5E8;
+
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+
+    &.shadow {
+
+      text-shadow: 1px 1px 2px rgba(64, 53, 79, .75);
+    }
+
+    span {
+      font-family: $robotobold;
+    }
+  }
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 65;
+  }
+}

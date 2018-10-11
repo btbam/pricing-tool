@@ -1,0 +1,149 @@
+@import '../../shared/globalvars.scss';
+
+#news {
+  margin-top:50px;
+  .input-group-lg { width:661px; }
+  .peer-header-divider { margin-bottom:14px; margin-top:24px; }
+  .google-search-query { height:38px; } 
+  .btn-default { color: #7D919E; height:38px !important; padding:5px 15px; }
+}
+.news-search {
+  padding-bottom: 55px;
+  margin-bottom: 2px;
+  background-color: #5B6B79;
+  width: 800px;
+  min-height: 150px;
+  .title {
+    font-size: 25px;
+    outline: 1px solid #4b5c6d;
+    padding: 10px;
+    font-family: $robotomedium;
+    color: #c7d0d9;
+    font-size: 23px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    padding-left: 20px;
+  }
+  .panel-heading {
+    .panel-title {
+      line-height:24px;
+      .accordion-toggle {
+        span {
+          font-family: $robotomedium;
+          font-size: 24px;
+          color: #6B5872;
+        }
+      }
+    }
+  }
+}
+news-search {
+  margin-left: 25px;
+//  .panel-heading { margin-top:40px; }
+  input {
+    border: none;
+    background: transparent url(/images/search-icon-white.png) no-repeat 100% 26px !important;
+    font-family: $robotolight;
+    font-size: 32.5px;
+    border-bottom: 1px solid #838D97;
+    width: 660px;
+    padding: 9px 50px 0 4px;
+    padding-left: 4px;
+    outline: none;
+    position: relative;
+    line-height: 40px;
+  }
+  button {
+    border: none;
+    font-size: 12px;
+    margin: 0;
+  }
+  .search-info {
+    margin:4px 0 25px 0;
+    color: #555A5C;
+    font-family: $robotobold;
+    font-size: 12px;
+  }
+  .results{
+    padding-left: 0;
+    float: none;
+    &.loading{
+      position: relative;
+      top: -190px;
+      .result,
+      .pages {
+        opacity: .5;
+      }
+    }
+    .loader-dark{
+      top: 180px;
+      position: relative;
+    }
+  }
+  .result {
+//    margin-left: 25px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    line-height: 16px;
+    padding-right: 30px;
+
+
+    .result-title{
+      color: rgba(85,89,91,0.84);
+      font-family: $robotomedium;
+      font-size: 19px;
+      line-height: 25px;
+    }
+    .url {
+      margin:-5px 0 2px 0;
+    }
+    .url,
+    .description{
+      font-family: $robotoregular;
+      font-size: 16px;
+      line-height: 20px;
+      color: rgba(85,89,91,0.84);
+    }
+    a {
+      display: block;
+    }
+    .result-content{
+      padding-right: 50px;
+    }
+  }
+  .result, .result a {
+    color: $content-text-color;
+  }
+  .row{
+    margin-left: 0px;
+  }
+  .search-label{
+    color: #000;
+  }
+
+  .pages {
+    height: 38px;
+    float:right;
+    .page {
+      padding: 5px 12px;
+      font-size: 14px;
+      text-decoration: none;
+      float: left;
+      cursor: pointer;
+      color: $content-text-color;
+    }
+    .page-active {
+      color: #fff;
+      padding: 5px 12px;
+      background: #61abea;
+      font-size: 14px;
+      text-decoration: none;
+      float: left;
+      cursor: pointer;
+    }
+  }
+  .loader-dark {
+    margin-top: 130px;
+    margin-bottom: 60px;
+  }
+}

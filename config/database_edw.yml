@@ -1,0 +1,18 @@
+default: &default
+  adapter: oracle_enhanced
+  pool: 20
+  database: <%= ENV['EDW_DB_NAME'] %>
+  username: <%= ENV['EDW_DB_USERNAME'] %>
+  password: <%= ENV['EDW_DB_PWD'] %>
+  schema: <%= ENV['EDW_DB_SCHEMA'] %>
+  host: <%= ENV['EDW_DB_HOST'] %>
+  port: <%= ENV['EDW_DB_PORT'] %>
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+
+staging:
+  <<: *default

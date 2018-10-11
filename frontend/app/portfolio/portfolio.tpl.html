@@ -1,0 +1,84 @@
+<div class = "portfolio-main " ng-controller = "PortfolioCtrl">
+  <div class = "portfolio-header  ">
+    <div class = "portfolio-header-bar">
+      <div class = "portfolio-header-company "> Dynatech Corp</div>
+      <div
+        class = " portfolio-search-bar      input-group input-group-lg   ">
+        <input type = "text" class = "form-control"
+               placeholder = "Name or D&amp;B #">
+
+        <div class = "input-group-btn">
+          <button class = "btn btn-default btn-main-search"><i
+            class = "fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "portfolio-content">
+  <div class='portfolio-wrapper portfolio-header-bottom' >
+    <select class = "portfolio-controls-select">
+      <option value = "YTD">YTD</option>
+      <option value = "MTD">MTD</option>
+    </select>
+    <select class = "portfolio-controls-select">
+      <option value = "Private">Private</option>
+      <option value = "Public">Public</option>
+    </select>
+    <select class = "portfolio-controls-select">
+      <option value = "DNO">D&O</option>
+      <option value = "DNO2">DNO2</option>
+    </select>
+</div>
+
+    <div class = "portfolio-graphs ">
+      <div>
+        <donut-chart id = "my-pf" title = "Your Portfolio"
+                     data = "[{'name':'21% Above Guidance','value':'1'},{'name':'50% At Guidance','value':'2'},{'name':'29% Below Guidance','value':'5'}]"
+                     class = " col-md-6 my-portfolio"><p align = "center"
+                                                         class = "portfolio-graph-container">Your Portfolio</p>
+        </donut-chart>
+
+        <donut-chart id = "us-avg" title = "US Div 39"
+                     data = "[{'name':' 37% Above Guidance','value':'1'},{'name':'13% At Guidance','value':'2'},{'name':'50% Below Guidance','value':'8'}]"
+                     class = " col-md-6 my-portfolio"><p align = "center"
+                                                         class = "portfolio-graph-container">US DIV 39</p>
+        </donut-chart>
+
+      </div>
+
+      <table class = 'table   portifolio-table'>
+        <hr>
+        <thead>
+        <tr class="container portfolio-table-tops">
+          <th class = 'col-xs-2 portfolio-table-row'><select class = "portfolio-sort-controls"
+                                         ng-model = "is_industry">
+            <option value = "Industry">Industry</option>
+            <option value = "State">State</option>
+          </select></th>
+          <th class = 'col-xs-2 portfolio-table-row'>Policies</th>
+          <th class = 'col-xs-2 portfolio-table-row'>GWP</th>
+          <th class = 'col-xs-2 portfolio-table-row'>Guidence</th>
+          <th class = 'col-xs-2 portfolio-table-row'>Diffirence from Guidence</th>
+          <th class = 'col-xs-2 portfolio-table-row'>Overall Difference</th>
+
+        </tr>
+        </thead>
+        <tr class='container' ng-repeat = "company in companyData | orderBy:is_industry">
+          <td class = 'col-xs-2 portfolio-table-row' ng-show = "is_industry === 'Industry'">{{company.Industry}}</td>
+          <td class = 'col-xs-2 portfolio-table-row' ng-show = "is_industry === 'State'">{{company.State}}</td>
+          <td class = 'col-xs-2 portfolio-table-row'>{{company.policies}}</td>
+          <td class = 'col-xs-2 portfolio-table-row'>{{company.GWP}}</td>
+          <td class = 'col-xs-2 portfolio-table-row'>{{company.Guidance}}</td>
+          <td class = 'col-xs-2 portfolio-table-row'><i class = "fa fa-caret-down portfolio-warning"></i>16.8%</td>
+          <td class = 'col-xs-2 portfolio-table-row'><i class = "fa fa-caret-up portfolio-ok"></i>16.8%</td>
+
+
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+
+
+

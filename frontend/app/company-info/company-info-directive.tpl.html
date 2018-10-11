@@ -1,0 +1,58 @@
+<div ng-init="companyInfo.getData()">
+  <div class="col-md-4 companyInfo">
+    <h2 ng-bind="companyInfo.companyData.name"></h2>
+    <div class="title dropdown-container">
+      <div class="dropdown-overlay" ng-bind="companyInfo.industry.name"></div>
+      <select class="styled-select industry-select" ng-model="companyInfo.industry"
+        ng-change="companyInfo.updateIndustryData()" ng-options='ind.name for ind in companyInfo.industries'>
+      </select>
+    </div>
+    <div class="bankruptcy-chance" ng-if="companyInfo.companyData.bankruptcy.visible">
+      Financial Risk: <span class="value {{companyInfo.companyData.bankruptcy.color}}" ng-bind="companyInfo.companyData.bankruptcy.description">{{companyInfo.companyData.bankruptcy.description}}</span>
+    </div>
+    <br>
+    <address>
+      D&amp;B: #: <span class="duns-number" ng-bind="companyInfo.companyData.duns_number"></span>
+      <br>
+      <span ng-if="companyInfo.companyData.url != 'N/A'">
+        <a href="{{companyInfo.companyData.url}}" class="company-url" ng-bind="companyInfo.companyData.companyUrlFormatted"></a>
+      </span>
+      <span class="address">
+        <span class="street-address" ng-bind="companyInfo.companyData.street_address"></span>
+        <span class="city" ng-bind="companyInfo.companyData.city"></span>
+        <span class="state" ng-bind="companyInfo.companyData.state"></span>
+        <span class="zip-code" ng-bind="companyInfo.companyData.zip_code"></span>
+      </span>
+    </address>
+
+    <ul class="meta">
+      <li class="hq">
+        <span class="section-label">HQ:</span>
+        <span ng-if="companyInfo.companyData.hq_state" class="section-value">{{companyInfo.companyData.hq_state}}</span>
+        <span ng-if="!companyInfo.companyData.hq_state" class="section-value">N/A</span>
+      </li>
+      <li class="ownership" ng-if="companyInfo.companyData.ownership">
+        <span class="section-label">Ownership:</span>
+        <span class="section-value">{{companyInfo.companyData.ownership}}</span>
+      </li>
+      <li class="years-of-operation">
+        <span class="section-label">Years In Operation:</span>
+        <span ng-if="companyInfo.companyData.start_year" class="section-value">{{companyInfo.companyData.start_year}}</span>
+        <span ng-if="!companyInfo.companyData.start_year" class="section-value">N/A</span>
+      </li>
+    </ul>
+    <div class="dropdown jump-to" stick-to>
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" aria-expanded="true">
+        Jump To
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="companyInfo.scrollTo('loss-history')">Loss Ratio</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="companyInfo.scrollTo('industry')">Industry</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="companyInfo.scrollTo('state')">State</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="companyInfo.scrollTo('size')">Revenue ($)</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="companyInfo.scrollTo('news')">News</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

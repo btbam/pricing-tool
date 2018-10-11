@@ -1,0 +1,45 @@
+<h2>Sign up</h2>
+
+<form novalidate accept-charset="UTF-8" ng-submit="signUp.submit(signUp.user, new_user.$error)" name="new_user" class="new_user" id="new_user" >
+
+  <ul id="messages" ng-show="attemptSubmit">
+    <div ng-messages="new_user.email.$error">
+      <li ng-message="required">Email is required</li>
+      <li ng-message="email">Email is not a valid email address</li>
+    </div>
+
+    <div ng-messages="new_user.password.$error">
+      <li ng-message="required">Password is required</li>
+      <li ng-message="minlength">Password must be at least 8 characters long</li>
+    </div>
+
+    <div ng-messages="new_user.password_confirmation.$error">
+
+      <li ng-message="required">Password confirmation is required</li>
+      <li ng-message="minlength">Password confirmation must be at least 8 characters long</li>
+      <li ng-message="passwordMatch">Password confirmation must match</li>
+    </div>
+
+  </ul>
+
+  <div class="form-group">
+    <label for="user_email">Email</label><br>
+    <input required autofocus="autofocus" class="form-control" id="user_email" name="email" ng-model="signUp.user.email" type="email" value="">
+  </div>
+
+  <div class="form-group">
+    <label for="user_password">Password</label><br>
+    <input required minlength="8" autocomplete="off" class="form-control" id="user_password" name="password" ng-model="signUp.user.password" type="password">
+  </div>
+
+  <div class="form-group">
+    <label for="user_password_confirmation">Password confirmation</label><br>
+    <input match-password="password" required minlength="8" autocomplete="off" class="form-control" id="user_password_confirmation" name="password_confirmation" ng-model="signUp.user.password_confirmation" type="password">
+  </div>
+
+    <div class="form-group"><input ng-click="attemptSubmit=true" class="btn btn-primary pull-right" name="commit" type="submit" value="Sign up"></div>
+</form>
+
+<div class="sign_in_buttons">
+  <a ui-sref="signIn">Sign in</a><br>
+</div>

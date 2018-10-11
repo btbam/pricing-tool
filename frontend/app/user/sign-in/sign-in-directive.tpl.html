@@ -1,0 +1,38 @@
+<h2>Sign in</h2>
+<form novalidate accept-charset="UTF-8" class="new_use" name="sign_in" ng-submit="submit()">
+  <ul id="messages" ng-show="signIn.attemptSubmit">
+    <div ng-messages="sign_in.email.$error">
+      <li ng-message="required">Email is required</li>
+      <li ng-message="email">Email is not a valid email address</li>
+    </div>
+
+    <div ng-messages="sign_in.password.$error">
+      <li ng-message="required">Password is required</li>
+    </div>
+  </ul>
+
+
+  <div class="form-group">
+    <label for="user_email">Email</label><br>
+    <input required autofocus="autofocus" class="form-control" id="user_email" name="email" ng-model="user.email" type="email" value="">
+  </div>
+
+  <div class="form-group">
+    <label for="user_password">Password</label><br>
+    <input required autocomplete="off" class="form-control" id="user_password" name="password" ng-model="user.password" type="password">
+  </div>
+
+  <div class="form-group">
+    <input name="remember_me" type="hidden" value="0">
+    <input id="user_remember_me" name="remember_me" type="checkbox"  ng-model="user.remember" value="1">
+    <label for="user_remember_me">Remember My Username</label>
+  </div>
+
+  <div class="form-group"><input class="btn btn-primary pull-right" name="commit" type="submit" value="Sign in" ng-click="signIn.attemptSubmit=true"></div>
+</form>
+<br>
+
+<div class="sign_in_buttons">
+  <a ui-sref="signUp">Sign up</a><br>
+  <a ui-sref="resetPassword">Forgot your password?</a>
+</div>

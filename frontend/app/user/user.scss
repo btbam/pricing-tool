@@ -1,0 +1,35 @@
+@import '../shared/globalvars.scss';
+body{}
+
+.panels-container .panels p.user_message,
+p.user_message {
+  font-size: 15px;
+  line-height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-family: $robotoregular;
+  font-weight: 100;
+
+  b.subject {
+    font-size: 16px;
+    font-family: $robotomedium;
+    font-weight: 100;
+    display: block;
+    padding-bottom: 10px;
+  }
+}
+
+.sign_in_buttons {
+  display: block;
+  clear:both;
+  padding-top:20px;
+}
+
+reset-password,
+reset-password-confirm {
+  h2 {
+    margin-bottom: 30px;
+  }
+}

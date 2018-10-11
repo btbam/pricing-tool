@@ -1,0 +1,37 @@
+@import '../shared/fonts.scss';
+
+// colors
+$orange: rgb(230, 161, 92);
+$grey: rgb(150, 150, 150);
+$light-grey-green: rgb(165, 172, 170);
+$green: rgb(124, 207, 129);
+$light-green: rgb(144, 163, 145);
+$tan: rgb(201, 203, 89);
+$yellow: rgb(221, 191, 78);
+$grey-blue-light: rgb(216, 216, 216);
+$grey-blue-dark: rgb(165, 172, 170);
+$grey-blue-lighter: rgb(199, 208, 217);
+$light-blue: rgb(163, 197, 248);
+$bright-green: rgb(143, 204, 150);
+$bright-red: rgb(240, 127, 110);
+$light-orange: rgb(232, 221, 181);
+
+$grey-blue-readible: rgb(147, 187, 180);
+
+$content-background: #FEFDFD;
+$content-text-color: #6F726F;
+
+$dropdown-active-color: rgba(43, 39, 46, 0.32);
+
+// fonts
+$robotobold: 'robotobold', Helvetica, Arial, sans-serif;
+$robotomedium: 'robotomedium', Helvetica, Arial, sans-serif;
+$robotoregular: 'robotoregular', Helvetica, Arial, sans-serif;
+$robotolight: 'robotolight', Helvetica, Arial, sans-serif;
+
+$green-gradient: linear-gradient(-180deg, #E5EDAF 50%, #ECEEF0 100%);
+
+//mixins
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+  box-shadow:$top $left $blur $color #{$inset};
+}

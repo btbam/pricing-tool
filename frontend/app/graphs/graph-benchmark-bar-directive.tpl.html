@@ -1,0 +1,24 @@
+<figure id="benchmark-graph-container" ng-if="showBenchmark">
+	<div id="benchmark-graph"></div>
+
+	<div class="benchmark-chunk" id="benchmark-chunk-benchmark" style="left: {{benchmark.benchmark.position}}px;">
+		<div class="stat-name">Benchmark</div>
+		<div class="stat-value">{{benchmark.benchmark.value|currency:"$":0}}</div>
+		<div class="vertical-pointer"></div>
+	</div>
+	<div class="benchmark-chunk" id="benchmark-chunk-expiring-gwp" ng-hide="benchmark.expiringGWP.value === 0" ng-show="benchmark.expiringGWP.value != 0" style="right: {{benchmark.expiringGWP.position}}px;">
+		<div class="stat-name">Expiring GWP</div>
+		<div class="stat-value">{{ benchmark.expiringGWP.value|currency:"$":0}} <span class="stat-pct"></span></div>
+	</div>
+	<div class="benchmark-chunk" id="benchmark-chunk-ballpark" style="left: {{benchmark.ballpark.position}}px;">
+		<img src="/images/blue-star.svg" alt="" class="ballpark-star">
+		<div class="stat-name">Ballpark</div>
+		<div class="stat-value">{{benchmark.ballpark.value|currency:"$":0}}
+		<span class="stat-pct {{ benchmark.ballpark.percentChangeDirection }}" ng-if="benchmark.ballpark.percentChange">
+			<i class="fa {{ benchmark.ballpark.percentChangeDirection === 'up' ? 'fa-caret-up' : 'fa-caret-down' }}"></i>
+			{{ benchmark.ballpark.percentChange }}
+		</span>
+		</div>
+
+	</div>
+</figure>

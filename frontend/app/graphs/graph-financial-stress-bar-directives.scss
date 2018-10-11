@@ -1,0 +1,324 @@
+@import '../shared/globalvars.scss';
+
+.stress-score {
+  .summary-section-title {
+    margin-left:-70px;
+  }
+  .graph-key {
+    padding-top: 10px;
+    .company span {
+      &.low {
+        background: rgb(216, 72, 72);
+      }
+      &.low-mid {
+        background: rgb(216, 155, 72);
+      }
+      &.mid {
+        background: rgb(216, 177, 72);
+      }
+      &.mid-high {
+        background: rgb(124, 209, 131);
+      }
+      &.high {
+        background: rgb(98, 191, 105);
+      }
+    }
+    .average span {
+      background: $grey;
+    }
+  }
+  rect.bar-0 {
+    fill: $green;
+  }
+  rect.bar-1 {
+    fill: $grey;
+  }
+}
+
+.stress-score {
+  h3 {
+    margin-left: -75px;
+  }
+  graph-stress-score {
+    position: relative;
+    display: block;
+    margin-top: 35px;
+    margin-left: 75px;
+  }
+  graph-stress-score,
+  .radial-bar {
+    height: 235px;
+    width: 235px;
+  }
+  svg {
+    .background {
+      background: transparent;
+      fill: none;
+    }
+  }
+  .stress-bar {
+    background: image-url('images/financial_stress_graph_bg_horizontal.svg') no-repeat;
+    display: block;
+    width: 14px;
+    height: 175px;
+    position: absolute;
+    left: -35px;
+    top: 15px;
+    > span {
+      font-size: 15px;
+      left: -42px;
+      font-family: $robotolight;
+      text-align: right;
+    }
+    .stress-bar-min {
+      position: absolute;
+      top: 160px;
+    }
+    .stress-bar-mid {
+      position: absolute;
+      top: 80px;
+    }
+    .stress-bar-max {
+      position: absolute;
+      top: -9px;
+    }
+  }
+  .outer-circle-value {
+    font-size: 40px;
+    font-family: $robotomedium;
+    position: absolute;
+    top: 75px;
+    left: 65px;
+    text-align: center;
+    width: 245px;
+    left: -23px;
+    &.low {
+      color: rgb(216, 72, 72);
+    }
+    &.low-mid {
+      color: rgb(216, 155, 72);
+    }
+    &.mid {
+      color: rgb(216, 177, 72);
+    }
+    &.mid-high {
+      color: rgb(124, 209, 131);
+    }
+    &.high {
+      color: rgb(98, 191, 105);
+    }
+  }
+  .inner-circle-value {
+    color: $grey;
+    font-size: 22px;
+    font-family: $robotomedium;
+    position: absolute;
+    top: 115px;
+    left: 85px;
+    text-align: center;
+    width: 245px;
+    left: -23px;
+  }
+  .radial-bar {
+    position: relative;
+    display: block;
+  }
+  .outer-circle,
+  .inner-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200px;
+    width: 200px;
+    box-sizing: border-box;
+  }
+  .outer-circle {
+    .arc {
+      stroke-weight: 0.1;
+    }
+    &.low {
+      .arc {
+        fill: rgb(216, 72, 72);
+      }
+    }
+    &.low-mid {
+      .arc {
+        fill: rgb(216, 155, 72);
+      }
+    }
+    &.mid {
+      .arc {
+        fill: rgb(216, 177, 72);
+      }
+    }
+    &.mid-high {
+      .arc {
+        fill: rgb(124, 209, 131);
+      }
+    }
+    &.high {
+      .arc {
+        fill: rgb(98, 191, 105);
+      }
+    }
+    .arc2 {
+      fill: $light-green;
+    }
+    .component {
+      fill: #e1e1e1;
+    }
+  }
+  .inner-circle {
+    top: 23px;
+    left: 23px;
+    .arc {
+      stroke-weight: 0.1;
+      fill: $grey;
+    }
+    .arc2 {
+      fill: $light-green;
+    }
+    .component {
+      fill: none;
+    }
+  }
+  #test .arc2 {
+    stroke-weight: 0.1;
+    fill: #3660b0;
+  }
+  #outer {
+    background: #FFFFFF;
+    border-radius: 5px;
+    color: #000;
+  }
+  #div1,
+  #div2,
+  #div3,
+  #div4 {
+    width: 33%;
+    height: 200px;
+    box-sizing: border-box;
+    float: left;
+  }
+  #div2 .arc {
+    stroke-weight: 0.1;
+    fill: #f0a417;
+  }
+  #div2 .arc2 {
+    stroke-weight: 0.1;
+    fill: #b00d08;
+  }
+  #div3 .arc {
+    stroke-weight: 0.1;
+    fill: #1d871b;
+  }
+  .selectedRadial {
+    border-radius: 3px;
+    background: #f4f4f4;
+    color: #000;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(200, 200, 200, 0.85);
+  }
+  .radial {
+    border-radius: 3px;
+    background: #FFFFFF;
+    color: #000;
+  }
+}
+
+graph-financial-stress-bar {
+  position: relative;
+  display: block;
+  margin-top: 15px;
+  padding-top: 25px;
+
+  .stress-score-bar {
+    background: image-url('images/financial_stress_graph_bg_horizontal.svg') no-repeat;
+    border-radius: 2px 2px 2px 2px;
+    display: block;
+    width: 378px;
+    height: 10px;
+    margin-top: 0;
+    /*box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);*/
+    position: relative;
+    margin-left: -30px;
+    margin-right: 90px;
+    margin-bottom: 150px;
+  }
+  .max-score {
+    font-family:$robotolight;
+    font-size: 14px;
+    color: rgba(255,255,255,0.54);
+    line-height: 16px;
+    position: absolute;
+    top: -20px;
+    display: block;
+    line-height: 17px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .score {
+    transition: 575ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
+    text-align:center;
+    display:inline-block;
+    width:100px;
+    position:absolute;
+    margin-left:-48px;
+
+    &.company-score {
+      top:-55px;
+    }
+  }
+}
+
+
+
+.revenue-and-employees {
+  .summary-section-title {
+    font-family: $robotolight, Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    color: #FFFFFF;
+    line-height: 24px;
+    padding-bottom:17px;
+    font-weight: bold;
+    margin-left: -120px;
+  }
+  .title {
+    font-family: $robotolight;
+    font-size: 14px;
+    color: #FFFFFF;
+    color: rgba(255,255,255,0.54);
+    line-height: 16px;
+    display: block;
+    margin-bottom: 0px;
+  }
+  .value {
+    font-family: $robotolight;
+    font-size: 14px;
+    color: #fff;
+    line-height: 16px;
+    margin-top:4px;
+    display:block;
+  }
+
+  .fa-caret-right,
+  .fa-caret-left {
+    font-size: 30px;
+    color: $bright-red;
+    position: absolute;
+    right: -17px;
+    top: 14px;
+    font-weight: 100;
+  }
+  .fa-caret-left {
+    left: -17px;
+  }
+
+  .arrow-green.fa { color: $bright-green; }
+  .arrow-yellow-light.fa { color: $tan; }
+  .arrow-yellow.fa { color: $yellow; }
+  .arrow-orange.fa { color: $orange; }
+  .arrow-red.fa { color: $bright-red; }
+
+}

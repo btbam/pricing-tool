@@ -1,0 +1,209 @@
+@import '../shared/globalvars.scss';
+
+html.upgrade_browser {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: $robotomedium;
+  background: $content-background;
+  color: $content-text-color;
+}
+
+body.upgrade_browser {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 15px;
+  font-family: $robotomedium;
+  background: $content-background;
+  background-color: $content-background;
+  background-image: none;
+  filter: none;
+  color: $content-text-color;
+
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color:#7D8794;
+  }
+
+  img {
+    border: 0;
+  }
+
+  .header_stripe_container {
+    background: #473a54 url('/images/pricing-tool_gradient_image_bg.png');
+    background-repeat: repeat-x;
+    padding: 0 0 35px;
+    padding-top: 10px;
+    position: relative;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 0;
+    font-family: Helvetica;
+    height: 75px;
+  }
+
+  .header {
+    line-height: 76px;
+    margin-right: 0;
+    margin-left: 0;
+    width: 65%;
+    margin: 0 auto;
+
+    #logo {
+      margin: 0;
+      line-height: inherit;
+      font-family: $robotomedium;
+      font-size: 30px;
+      color: #fff;
+      opacity: 0.3;
+      text-shadow: 0px 1px 2px rgba(0,0,0,0.30);
+      padding-top: 5px;
+      text-decoration: none;
+    }
+  }
+
+  .upgrade_content_container {
+    margin-bottom: -60px;
+    position: relative;
+    bottom: 0;
+    z-index: 75;
+    min-height: 100%;
+
+    .content {
+      width: 65%;
+      margin: 0 auto;
+      float: none;
+      min-height: 875px;
+    }
+
+    .notice {
+      font-family: $robotoregular;
+      font-size: 18px;
+      text-align: center;
+      padding-bottom: 35px;
+      padding-top: 20px;
+    }
+
+    .upgrade_chrome {
+      position: relative;
+    }
+
+    .upgrade_firefox {
+      position: relative;
+      padding-top: 20px;
+      margin-top: 15px;
+      border-top: 1px solid #CBDBE5;
+      clear: both;
+    }
+
+    .upgrade_safari {
+      position: relative;
+      padding-top: 20px;
+      margin-top: 15px;
+      border-top: 1px solid #CBDBE5;
+      clear: both;
+    }
+
+    .upgrade_opera {
+      position: relative;
+      padding-top: 20px;
+      margin-top: 15px;
+      border-top: 1px solid #CBDBE5;
+      clear: both;
+    }
+
+    .upgrade {
+      img {
+        width: 150px;
+        max-width: 100%;
+      }
+    }
+
+    .icon {
+      width: 20%;
+      float: left;
+      text-align: center;
+      font-size: 18px;
+      padding-bottom: 20px;
+    }
+
+    .description {
+      width: 77%;
+      padding-left: 2%;
+      float: left;
+      font-family: $robotoregular;
+
+      a {
+        font-size: 16px;
+        font-family: $robotomedium;
+
+        &.download_button {
+          font-size: 16px;
+          font-family: $robotomedium;
+          color: #96A9B6;
+          text-decoration: none;
+          border: 1px solid #CBDBE5;
+          border-radius: 5px;
+          padding: 7px 20px;
+
+          &:hover {
+            background: #CBDBE5;
+            color: #fff;
+          }
+        }
+      }
+
+    }
+
+    .choices {
+      padding: 15px 20px;
+      border-radius: 5px;
+      border: 1px solid #CBDBE5;
+      min-height: 575px;
+      //min-height: 360px;
+      padding-top: 40px;
+
+      padding-top: 20px;
+    }
+
+    .download_container {
+      padding-top: 15px;
+    }
+
+    a:link {
+      cursor: pointer;
+    }
+
+  }
+
+  .footer {
+    font-size: 12px;
+    padding-left: 30px;
+    clear: both;
+    margin-right: auto;
+    margin-left: auto;
+    background: $content-background;
+    color: $content-text-color;
+    width: 100%;
+    height: 30px;
+    z-index: 75;
+    font-family: 'Helvetica';
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 10px;
+
+    .left {
+      float: left;
+      padding-left: 30px;
+    }
+
+    .right {
+      float: right;
+      padding-right: 30px;
+    }
+  }
+
+}
